@@ -26,7 +26,6 @@ $validCommands = [
 $command = isset($_GET['command']) ? $_GET['command'] : null;
 $baseUrl = 'https://www.metaweather.com/api/location/';
 
-//echo '<pre>' ; print_r($command); die;
 
 /**
  * Functions
@@ -42,7 +41,6 @@ function quitWithResponse($output, $code = 200) {
     foreach ($output  as $k => $val){
       $intoArry =   json_decode($val , true);
          foreach ($intoArry as $ky => $vl){
-           // echo '<pre>' ; print_r($vl);
             if(isset($vl['title'])){
                 $result[$k][$ky] = $vl['title'];
             }
@@ -54,20 +52,6 @@ function quitWithResponse($output, $code = 200) {
     }
 
     echo json_encode($result);
-
-    //return $result;
-
-    //echo '<pre>' ; print_r($result);
-
-
-
-
-    /*foreach ($intoArry['consolidated_weather'] as $ky => $vl){
-        print_r($vl);
-
-    }*/
-   // print_r($result);
-    //echo $output;
     exit;
 }
 

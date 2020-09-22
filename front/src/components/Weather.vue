@@ -2,7 +2,6 @@
     <div class="Weather">
         <h1>{{ msg }}</h1>
 
-
         <div class="chessboard">
             <ul v-for="item ,key in items" :key="item.key">
                 <li id="example-1">
@@ -14,7 +13,6 @@
             </ul>
         </div>
         <li v-if="!items.length">City data not found</li>
-
     </div>
 </template>
 
@@ -26,25 +24,16 @@
                 msg: 'Welcome to Weather Casting',
                 search : this.$route.params.id,
                 items : []
-
             }
         },
 
         created: function () {
             const baseURI = 'api/weather.php?command=search&keyword='+this.search;
-
-            this.$http.get(baseURI , {
-
-            })
+               this.$http.get(baseURI , {
+               })
                 .then((result) => {
-                    //this.items = result.data
-                    //console.log('result.data' ,result.data['consolidated_weather'])
                     let list=[];
                     this.items =  result.data;
-                    //console.log('this.items' ,this.items[0])
-
-                    console.log('this.items' ,this.items)
-
                 })
         },
 

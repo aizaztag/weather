@@ -8,20 +8,10 @@
                 <input type="text" v-model="search">
             </p>
             <button class="btn btn-success">Submit</button>
-
         </form>
 
         <h1>{{ msg }}</h1>
         <h3>Please wait while data is loaded</h3>
-
-
-
-        <!--<ul id="example-1">
-            <li v-for="itm ,k in items" :key="itm.k">
-                Temp: {{item}}
-            </li>
-        </ul>
--->
 
         <div class="chessboard">
             <ul v-for="item ,key in items" :key="item.key">
@@ -54,7 +44,6 @@
         },
 
         created: function () {
-            //const baseURI = 'api/weather.php?command=search&keyword[]=london&keyword[]=Berlin';
             const baseURI = 'api/weather.php?command=location&woeid[]=44418&woeid[]=638242&woeid[]=2344116&woeid[]=565346&woeid[]=560743&woeid[]=9807';
 
             this.$http.get(baseURI , {
@@ -63,9 +52,6 @@
                 .then((result) => {
                     let list=[];
                     this.items =  result.data;
-
-                    console.log('this.items' ,this.items)
-
                 })
             },
 
@@ -73,22 +59,10 @@
             formSubmit(e) {
                 e.preventDefault();
                 let search = this.search;
-
-
                 this.$router.push({
                     name: 'Search',
                     params: { id: search }
                 });
-
-                //this.$router.push({ name: '/weather' })
-
-                /*this.$http.get('http://localhost:8000/#/search/'+search, {
-
-                })
-                    .then(function (response) {
-                    })
-                    .catch(function (error) {
-                    });*/
             }
 
         }
